@@ -1,0 +1,68 @@
+
+<script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+<html>
+
+<py-env>
+- requests
+</py-env>	
+
+
+<py-script>
+
+
+payload = {
+    "results_required": ['TBR'],
+    "simulation_batches": 1,
+    "simulation_particles": 1000,
+    "inner_blanket_radius": 100,
+    "blanket_thickness": 100,
+    "blanket_height": 500,
+    "lower_blanket_thickness": 100,
+    "upper_blanket_thickness": 100,
+    "blanket_vv_gap": 50,
+    "upper_vv_thickness": 10,
+    "vv_thickness": 10,
+    "lower_vv_thickness": 10,
+    "rotation_angle": 360,
+    "blanket_material": "Li",
+    "lithium_enrichment": 7.59,
+    "vessel_material": "Iron",
+}
+    
+<!-- SSL is not in pyodide at the moment -->
+<!-- could use this approach in the future --> 
+<!-- import requests -->
+<!-- https://bartbroere.eu/2022/04/25/pyodide-requests-binary-works-update/ -->
+<!-- https://community.anaconda.cloud/t/the-requests-module/20494/4 -->
+<!-- session = requests.Session()
+url = "https://tgkubvki8f.execute-api.eu-west-2.amazonaws.com/flf_neutronics_api/simulate"
+response = requests.get(url, params=payload, headers=session.headers).json()
+print(response)  -->
+
+<!-- method 2 -->
+<!-- from js import XMLHttpRequest
+
+url = "https://tgkubvki8f.execute-api.eu-west-2.amazonaws.com/flf_neutronics_api/simulate"
+req = XMLHttpRequest.new()
+req.open("POST", url, False)
+req.send(None)
+
+print(str(req.response))) -->
+
+<!-- method 3 -->
+<!-- import asyncio
+from js import console, fetch
+
+async def post_data():
+    response = await fetch(url,{'method':'POST', 'mode':'cors'})
+    json = await response.json()
+    console.log('json', json)
+    return json
+
+await post_data() -->
+
+</py-script>
+
+</html>
+

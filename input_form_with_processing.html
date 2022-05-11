@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />-->
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+
+<body>
+  <div>Type an sample input here</div>
+  <input type="text" id="input_box"/>
+  <button id="submit-button" type="submit" pys-onClick="process_input_data">OK</button>
+  <div id="output_result"></div>
+
+<py-script>
+
+def process_input_data(*args, **kwargs):
+    
+    text = Element('input_box').element.value
+
+    value = float(text) * 2
+
+    Element('output_result').element.innerText = value
+</py-script>
+
+  </body>
+</html>
