@@ -1,0 +1,47 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+    <py-env>
+        - plotly
+    </py-env>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Interactive Plotly with Pyscript</h1>
+    </div>
+
+    <div class="row">
+        <div id="my_chart"></div>
+    </div>
+
+    <script type='text/javascript'>
+        function plot(graph, chart) {
+            var figure = JSON.parse(graph)
+            Plotly.newPlot(chart, figure, {});
+        }
+    </script>
+
+    <py-script>
+        import js
+        import json
+        import plotly
+        import plotly.graph_objects as go
+
+        def plot():
+            fig = go.Figure(data=go.Scatter(x=[1,2,3,4], y=[1,2,1,4]))
+            graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+            js.plot(graphJSON,"my_chart")
+
+        plot()
+    </py-script>
+</body>
+
+</html>
