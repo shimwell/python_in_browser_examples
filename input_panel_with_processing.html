@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.js"></script>
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.2.js"></script>
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.2.min.js"></script>
+  <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.2.min.js"></script>
+  <script type="text/javascript" src="https://unpkg.com/@holoviz/panel@0.13.0/dist/panel.min.js"></script>
+  <script type="text/javascript">
+    Bokeh.set_log_level("info");
+  </script>
+
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+  <py-env>
+    - panel==0.13.1
+</py-env>
+</head>
+
+<body>
+  <div id="input_box_and_button"></div>
+  <div id="output_result"></div>
+
+
+<py-script>
+import asyncio  # allows await to be used
+import panel as pn
+from panel.io.pyodide import show
+
+text_input_widget = pn.widgets.TextInput(name='Input a number', value='')
+text_output_widget = pn.widgets.Number(name='A widget')
+button_upload = pn.widgets.Button(name='process', button_type='primary', width=100)
+
+row = pn.Row(text_input_widget, button_upload, height=75)
+
+def process_input_data(event):
+
+  text = text_input_widget.value
+
+  value = float(text) * 2
+  text_output_widget.value = value
+
+button_upload.on_click(process_input_data)
+
+await show(row, 'input_box_and_button')
+await show(text_output_widget, 'output_result')
+</py-script>
+
+  </body>
+</html>
