@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+  <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+  <py-env>
+    - matplotlib
+    - numpy
+  </py-env>
+</head>
+Run the Python code below or replace with your own code and run
+<body>
+  <py-repl>
+for x in range(10):
+  print('Jon is great')
+  </py-repl>
+We can also plot graphs
+  <py-repl auto-generate="true">
+import matplotlib.pyplot as plt
+plt.plot([1,2,3,4])
+plt
+  </py-repl>
+</body>
+</html>
