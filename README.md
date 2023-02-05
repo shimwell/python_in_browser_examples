@@ -3,7 +3,7 @@
 A small collection of html files that run Python using PyScript.
 
 These are just examples I've put together while learning PyScript.
-For a larger set of examples the (PyScript website)[https://pyscript.net/examples/] has a great selection.
+For a larger set of examples the [PyScript website](https://pyscript.net/examples/) has a great selection.
 
 These html can be downloaded and opened locally with Firefox, Chrome, Edge
 
